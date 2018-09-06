@@ -14,8 +14,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
  */
 class UpdateContactTest extends TestCase
 {
-    use DatabaseMigrations,
-        WithoutMiddleware;
+    use DatabaseMigrations;
 
     /**
      * Проверяет обновление телефона.

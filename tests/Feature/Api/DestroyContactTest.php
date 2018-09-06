@@ -2,19 +2,28 @@
 
 namespace Tests\Feature\Api;
 
+use App\Contact;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+/**
+ * Class DestroyContactTest
+ * @package Tests\Feature\Api
+ */
 class DestroyContactTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
-     * A basic test example.
-     *
-     * @return void
+     * Проверяет удаление записи.
      */
-    public function testExample()
+    public function testDeleteContact()
     {
-        $this->assertTrue(true);
+        $contact = factory(Contact::class)->create();
+
+        $response = $this->delete(action('Api\ContactController@destroy', [$contact->id]));
+
+        $response->assertStatus(202);
+        $response->assertJsonFragment(['success' => true]);
     }
 }
