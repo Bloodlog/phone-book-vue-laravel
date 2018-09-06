@@ -14,4 +14,4 @@
 
 # Routes:
 | Method | URI | Parameters | Comment |
-* [POST] `api/phone` {name, phone, comment} - add contact
+* [POST] `api/contacts` {name, phone, comment} - add contact
