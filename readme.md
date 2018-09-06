@@ -14,4 +14,7 @@
 
 # Routes:
 | Method | URI | Parameters | Comment |
+* [GET] `api/contacts`  - show all contacts
 * [POST] `api/contacts` {name, phone, comment} - add contact
+* [PUT] `api/contacts/{contact}` {name, phone, comment} - edit contact
+* [DELETE] `api/contacts` {id} - delete contact
