@@ -3,9 +3,9 @@
 ## todo:
 #### Backend:
 * [x] - Add contact
-* [] - Update contact
-* [] - Delete contact
-* [] - Show contacts
+* [x] - Update contact
+* [x] - Delete contact
+* [x] - Show contacts
 #### Frontend:
 * [] - Add contact
 * [] - Update contact
