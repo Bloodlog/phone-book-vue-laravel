@@ -6,14 +6,15 @@ use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Responses\Success;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\CreatePhone;
-use App\Http\Requests\Api\UpdatePhone;
+use App\Http\Requests\Api\CreateContact;
+use App\Http\Requests\Api\UpdateContact;
 
 /**
- * Class PhoneController
+ * Class ContactController
+ *
  * @package App\Http\Controllers\Api
  */
-class PhonesController extends Controller
+class ContactController extends Controller
 {
     /**
      * Заполняемые параметры.
@@ -23,10 +24,10 @@ class PhonesController extends Controller
     /**
      * Добавляет новую запись.
      *
-     * @param CreatePhone|Request $request
+     * @param CreateContact|Request $request
      * @return Success
      */
-    public function create(CreatePhone $request)
+    public function store(CreateContact $request)
     {
         $phone = new Contact($request->only(self::FILLABLE_PARAMETERS));
 
@@ -36,13 +37,15 @@ class PhonesController extends Controller
     /**
      * Обновляет запись.
      *
-     * @param UpdatePhone|Request $request
-     * @param Contact $contact
+     * @param UpdateContact|Request $request
+     * @param                       $contact
      * @return Success
      * @internal param Contact $phone
      */
-    public function update(UpdatePhone $request, Contact $contact)
+    public function update(UpdateContact $request, $contact)
     {
+        $contact = Contact::findOrFail($contact);
+
         return new Success($contact->update($request->only(self::FILLABLE_PARAMETERS)), 202);
     }
 

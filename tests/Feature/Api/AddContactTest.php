@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class AddPhoneTest extends TestCase
+class AddContactTest extends TestCase
 {
     use DatabaseMigrations,
         WithoutMiddleware;
@@ -24,7 +24,7 @@ class AddPhoneTest extends TestCase
             'comment' => 'text'
         ];
 
-        $response = $this->post(action('Api\PhonesController@create'), $parameters);
+        $response = $this->post(action('Api\ContactController@store'), $parameters);
 
         $response->assertStatus(201);
         $response->assertJsonFragment($parameters);

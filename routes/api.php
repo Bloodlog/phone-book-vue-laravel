@@ -17,10 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('contact')->group(function () {
-    Route::get('/', 'Api\PhonesController@index');
-    Route::put('/{contact}', 'Api\PhonesController@update');
-    Route::post('/', 'Api\PhonesController@create');
-    Route::delete('/', 'Api\PhonesController@destroy');
-});
+Route::resource('contacts', 'Api\ContactController')
+    ->except(['create', 'edit', 'show']);
 

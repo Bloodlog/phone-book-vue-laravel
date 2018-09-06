@@ -8,10 +8,11 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
- * Class UpdatePhoneTest
+ * Class UpdateContactTest
+ *
  * @package Tests\Feature\Api
  */
-class UpdatePhoneTest extends TestCase
+class UpdateContactTest extends TestCase
 {
     use DatabaseMigrations,
         WithoutMiddleware;
@@ -32,7 +33,7 @@ class UpdatePhoneTest extends TestCase
             'comment' => $contactUpdated->comment
         ];
 
-        $response = $this->put(action('Api\PhonesController@update', $contact->id), $parameters);
+        $response = $this->put(action('Api\ContactController@update', [$contact->id]), $parameters);
 
         dd($response->json());
         $response->assertStatus(202);

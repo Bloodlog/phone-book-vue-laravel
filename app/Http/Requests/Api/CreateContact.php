@@ -5,10 +5,11 @@ namespace App\Http\Requests\Api;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UpdatePhone
+ * Class CreateContact
+ *
  * @package App\Http\Requests\Api
  */
-class UpdatePhone extends FormRequest
+class CreateContact extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +30,7 @@ class UpdatePhone extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'phone' => 'required|string|unique:contacts,phone,' . $this->contact
+            'phone' => 'required|string|unique:contacts,phone'
         ];
     }
 }
