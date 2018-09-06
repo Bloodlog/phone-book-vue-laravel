@@ -35,7 +35,6 @@ class UpdateContactTest extends TestCase
 
         $response = $this->put(action('Api\ContactController@update', [$contact->id]), $parameters);
 
-        dd($response->json());
         $response->assertStatus(202);
         $response->assertJsonFragment($parameters);
     }
