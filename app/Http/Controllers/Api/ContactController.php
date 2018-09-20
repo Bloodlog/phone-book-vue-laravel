@@ -28,33 +28,35 @@ class ContactController extends Controller
      */
     public function store(CreateContact $request)
     {
-        $phone = new Contact($request->only(self::FILLABLE_PARAMETERS));
+        $contact = new Contact($request->only(self::FILLABLE_PARAMETERS));
 
-        return new Success($phone, 201);
+        return new Success($contact, 201);
     }
 
     /**
      * Обновляет запись.
      *
      * @param UpdateContact $request
-     * @param                       $contact
+     * @param                       $id
      * @return Success
-     * @internal param Contact $phone
+     * @internal param Contact $contact
      */
-    public function update(UpdateContact $request, Contact $contact)
+    public function update(UpdateContact $request, $id)
     {
+        $contact = Contact::findOrFail($id);
+
         return new Success($contact->update($request->only(self::FILLABLE_PARAMETERS)), 202);
     }
 
     /**
      * Удаляет запись.
      *
-     * @param Contact $phone
+     * @param Contact $contact
      * @return Success
      */
-    public function destroy(Contact $phone)
+    public function destroy(Contact $contact)
     {
-        return new Success($phone->delete(), 202);
+        return new Success($contact->delete(), 202);
     }
 
     /**
@@ -63,5 +65,15 @@ class ContactController extends Controller
     public function index()
     {
         return new Success(Contact::all());
+    }
+
+    /**
+     * todo: test
+     * @param Contact $contact
+     * @return Success
+     */
+    public function show(Contact $contact)
+    {
+        return new Success($contact, 202);
     }
 }
