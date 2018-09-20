@@ -68,7 +68,8 @@ class ContactController extends Controller
     }
 
     /**
-     * todo: test
+     * Возвращает одну запись.
+     *
      * @param Contact $contact
      * @return Success
      */
